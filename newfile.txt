@@ -1,0 +1,19 @@
+[peter@client ~]$ ls  
+3.id_rsa.pub  
+4.[peter@client ~]$ mkdir ~/.ssh     #如果当前用户目录下没有 .ssh 目录，请先创建目录  
+5.[peter@client ~]$ chmod 700 ~/.ssh  
+6.[peter@client ~]$ mv id_rsa.pub ~/.ssh  
+7.[peter@client ~]$ cd ~/.ssh  
+8.[peter@client ~]$ cat id_rsa.pub >> authorized_keys2  
+9.[peter@client ~]$ rm -f id_rsa.pub  
+10.[peter@client ~]$ chmod 600 authorized_keys2  
+11.[peter@client ~]$ ls -l  
+12.total 4  
+13.-rw-------  1 peter peter 225 Oct 10 11:28 authorized_keys2   
+14.   
+15.测试使用密钥对进行远程登陆  
+16.[root@server ~]# ssh peter@192.168.0.2  
+17.Enter passphrase for key '/root/.ssh/id_rsa':      #提示输入密码短语，请输入刚才设置的密码短语  
+18.Last login: Sun Oct 10 11:32:14 2010 from 192.168.0.1  
+19.[peter@client ~]$   
+
